@@ -1,910 +1,546 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#080817">
-  <meta name="description" content="Muhammad Faraz — Software Engineer, Application Developer, and Machine Learning enthusiast. Explore my projects, skills, and experience.">
-  <title>Muhammad Faraz | Software Engineer World</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --bg: #080817;
-      --surface: #111126;
-      --surface2: #171730;
-      --text: #f2f3ff;
-      --muted: #a2a5c5;
-      --purple: #a855f7;
-      --cyan: #22d3ee;
-      --border: rgba(168, 85, 247, .22);
-      --gradient: linear-gradient(110deg, #a855f7, #22d3ee);
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
-
-    body {
-      font-family: Inter, sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(ellipse at 10% 5%, rgba(112, 43, 180, .15), transparent 38%),
-        radial-gradient(ellipse at 90% 45%, rgba(0, 184, 212, .09), transparent 35%),
-        var(--bg);
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; }
-    .container { width: min(1120px, 90%); margin-inline: auto; }
-
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(8, 8, 23, .88);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-inner {
-      min-height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .logo {
-      font-family: "Space Grotesk", sans-serif;
-      font-weight: 700;
-      font-size: 1.3rem;
-      white-space: nowrap;
-    }
-
-    .logo span, .gradient-text {
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 23px;
-    }
-
-    .nav-links a {
-      font-size: .86rem;
-      color: var(--muted);
-      transition: color .2s;
-    }
-
-    .nav-links a:hover { color: var(--cyan); }
-
-    .menu-toggle {
-      display: none;
-      color: var(--text);
-      border: 1px solid var(--border);
-      background: var(--surface);
-      border-radius: 9px;
-      padding: 7px 11px;
-      cursor: pointer;
-    }
-
-    section { padding: 92px 0; }
-
-    .section-heading {
-      text-align: center;
-      margin-bottom: 42px;
-    }
-
-    .eyebrow {
-      color: var(--cyan);
-      text-transform: uppercase;
-      font-size: .78rem;
-      letter-spacing: 3px;
-      font-weight: 700;
-    }
-
-    h2 {
-      font-family: "Space Grotesk", sans-serif;
-      font-size: clamp(2rem, 5vw, 3rem);
-      line-height: 1.2;
-      margin: 10px 0 13px;
-    }
-
-    .section-description {
-      color: var(--muted);
-      max-width: 680px;
-      margin: auto;
-    }
-
-    .hero {
-      min-height: 85vh;
-      display: flex;
-      align-items: center;
-      padding: 90px 0;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.4fr .8fr;
-      align-items: center;
-      gap: 60px;
-    }
-
-    .hero-badge {
-      display: inline-block;
-      border: 1px solid var(--border);
-      background: rgba(168, 85, 247, .08);
-      color: var(--cyan);
-      border-radius: 30px;
-      padding: 7px 15px;
-      font-size: .82rem;
-      margin-bottom: 24px;
-    }
-
-    h1 {
-      font-family: "Space Grotesk", sans-serif;
-      font-size: clamp(2.8rem, 6vw, 5rem);
-      line-height: 1.08;
-      letter-spacing: -2px;
-      margin-bottom: 22px;
-    }
-
-    .hero-copy {
-      max-width: 630px;
-      color: var(--muted);
-      font-size: 1.04rem;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 30px;
-    }
-
-    .btn {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      padding: 12px 21px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      font-weight: 600;
-      font-size: .9rem;
-      transition: transform .2s, box-shadow .2s, border-color .2s;
-    }
-
-    .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 30px #a855f72a; }
-
-    .btn-primary {
-      background: var(--gradient);
-      color: #080817;
-      border: 0;
-    }
-
-    .btn-secondary { background: var(--surface); }
-
-    .hero-visual {
-      width: min(320px, 100%);
-      aspect-ratio: 1;
-      margin: auto;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: radial-gradient(circle, #292052 0%, #15132e 50%, #0c0c20 72%);
-      border: 1px solid rgba(34, 211, 238, .35);
-      box-shadow: 0 0 75px rgba(168, 85, 247, .18), inset 0 0 40px #22d3ee0c;
-      position: relative;
-    }
-
-    .hero-visual::before, .hero-visual::after {
-      content: "";
-      position: absolute;
-      inset: -14px;
-      border: 1px solid rgba(168, 85, 247, .25);
-      border-radius: 50%;
-      animation: orbit 15s linear infinite;
-    }
-
-    .hero-visual::after {
-      inset: 12px;
-      border-color: rgba(34, 211, 238, .2);
-      animation-direction: reverse;
-      animation-duration: 19s;
-    }
-
-    .hero-symbol {
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 5rem;
-      font-weight: 700;
-      background: var(--gradient);
-      color: transparent;
-      background-clip: text;
-      -webkit-background-clip: text;
-    }
-
-    @keyframes orbit { to { transform: rotate(360deg); } }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-top: 35px;
-      max-width: 550px;
-    }
-
-    .stat {
-      padding: 16px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-    }
-
-    .stat strong {
-      display: block;
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 1.5rem;
-      color: var(--cyan);
-    }
-
-    .stat span { font-size: .78rem; color: var(--muted); }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 28px;
-    }
-
-    .panel {
-      background: rgba(17, 17, 38, .85);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 28px;
-    }
-
-    .panel h3, .project-card h3, .timeline-card h3 {
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 1.2rem;
-      margin-bottom: 12px;
-    }
-
-    .panel p { color: var(--muted); margin-bottom: 12px; }
-
-    .info-list { list-style: none; }
-    .info-list li { padding: 9px 0; border-bottom: 1px solid #ffffff0b; }
-    .info-list li:last-child { border-bottom: 0; }
-    .info-list strong { color: var(--cyan); }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .skill-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 15px;
-      padding: 23px;
-      transition: transform .25s, border-color .25s;
-    }
-
-    .skill-card:hover, .project-card:hover, .timeline-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(34, 211, 238, .6);
-    }
-
-    .skill-icon { font-size: 1.8rem; margin-bottom: 10px; }
-    .skill-card h3 { font-size: 1rem; margin-bottom: 12px; }
-    .skill-tags, .tags { display: flex; flex-wrap: wrap; gap: 8px; }
-
-    .tag {
-      display: inline-block;
-      border: 1px solid #a855f738;
-      background: #a855f710;
-      color: #d8c5ff;
-      padding: 5px 10px;
-      border-radius: 7px;
-      font-size: .75rem;
-    }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 22px;
-    }
-
-    .project-card {
-      min-width: 0;
-      display: flex;
-      flex-direction: column;
-      padding: 25px;
-      border-radius: 16px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      transition: transform .25s, border-color .25s;
-    }
-
-    .project-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 14px;
-    }
-
-    .project-icon {
-      width: 48px;
-      height: 48px;
-      display: grid;
-      place-items: center;
-      font-size: 1.5rem;
-      border-radius: 12px;
-      background: #a855f719;
-    }
-
-    .project-category { color: var(--cyan); font-size: .75rem; }
-    .project-card p { color: var(--muted); font-size: .92rem; margin-bottom: 18px; }
-    .project-card .tags { margin-top: auto; margin-bottom: 19px; }
-    .project-links { display: flex; gap: 12px; flex-wrap: wrap; }
-    .project-links a { color: var(--cyan); font-size: .85rem; font-weight: 600; }
-    .project-links a:hover { text-decoration: underline; }
-
-    .timeline {
-      position: relative;
-      max-width: 850px;
-      margin: auto;
-    }
-
-    .timeline::before {
-      content: "";
-      position: absolute;
-      left: 10px;
-      top: 8px;
-      bottom: 8px;
-      width: 2px;
-      background: linear-gradient(var(--purple), var(--cyan));
-    }
-
-    .timeline-item {
-      position: relative;
-      padding-left: 40px;
-      margin-bottom: 25px;
-    }
-
-    .timeline-item::before {
-      content: "";
-      position: absolute;
-      top: 8px;
-      left: 3px;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background: var(--bg);
-      border: 3px solid var(--cyan);
-      box-shadow: 0 0 15px #22d3ee55;
-    }
-
-    .timeline-card {
-      padding: 23px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 15px;
-      transition: transform .25s, border-color .25s;
-    }
-
-    .timeline-company { color: var(--cyan); font-weight: 600; font-size: .9rem; }
-    .timeline-type { color: var(--muted); font-size: .82rem; margin: 5px 0 12px; }
-    .timeline-card p { color: var(--muted); font-size: .92rem; }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .contact-card {
-      text-align: center;
-      padding: 24px 14px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 15px;
-      overflow-wrap: anywhere;
-      transition: border-color .2s;
-    }
-
-    .contact-card:hover { border-color: var(--cyan); }
-    .contact-icon { font-size: 1.7rem; }
-    .contact-card h3 { font-size: .98rem; margin: 8px 0; }
-    .contact-card p { color: var(--muted); font-size: .82rem; }
-
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 27px 0;
-      text-align: center;
-      color: var(--muted);
-      font-size: .85rem;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(22px);
-      transition: opacity .65s ease, transform .65s ease;
-    }
-
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    @media (max-width: 850px) {
-      .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 50px; }
-      .hero-copy, .stats { margin-inline: auto; }
-      .hero-actions { justify-content: center; }
-      .hero-visual { width: 245px; grid-row: 1; }
-      .about-grid { grid-template-columns: 1fr; }
-      .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .nav-links { gap: 13px; }
-    }
-
-    @media (max-width: 600px) {
-      section { padding: 68px 0; }
-      .nav-inner { min-height: 68px; }
-      .menu-toggle { display: block; }
-      .nav-links {
-        display: none;
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 68px;
-        background: #0c0c20;
-        padding: 20px 5%;
-        border-bottom: 1px solid var(--border);
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .nav-links.open { display: flex; }
-      .hero { min-height: auto; padding: 65px 0; }
-      h1 { letter-spacing: -1px; }
-      .skills-grid, .projects-grid, .contact-grid { grid-template-columns: 1fr; }
-      .stats { gap: 8px; }
-      .stat { padding: 12px 8px; }
-      .stat strong { font-size: 1.25rem; }
-      .panel, .project-card, .timeline-card { padding: 21px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        scroll-behavior: auto !important;
-        animation-duration: .01ms !important;
-        transition-duration: .01ms !important;
-      }
-      .reveal { opacity: 1; transform: none; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080817">
+<meta name="description" content="Muhammad Faraz — Software Engineer, Application Developer and Machine Learning enthusiast.">
+<title>Muhammad Faraz | Faraz's World</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:#080817;
+  --surface:#111126;
+  --surface2:#171730;
+  --text:#f2f3ff;
+  --muted:#a2a5c5;
+  --purple:#a855f7;
+  --cyan:#22d3ee;
+  --border:rgba(168,85,247,.25);
+  --gradient:linear-gradient(110deg,#a855f7,#22d3ee);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:85px}
+body{
+  background:radial-gradient(ellipse at 15% 5%,#4c1d9520,transparent 35%),
+             radial-gradient(ellipse at 90% 45%,#0891b220,transparent 35%),var(--bg);
+  color:var(--text);font-family:Inter,sans-serif;line-height:1.7;overflow-x:hidden
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.container{width:min(1120px,90%);margin:auto}
+
+/* SPLASH SCREEN */
+#splash-screen{
+  position:fixed;inset:0;z-index:99999;
+  display:flex;align-items:center;justify-content:center;
+  background:#080817;
+  background-image:radial-gradient(circle at center,#21123f 0%,#080817 65%);
+  transition:opacity .8s ease,visibility .8s ease
+}
+#splash-screen.hide{opacity:0;visibility:hidden;pointer-events:none}
+.splash-inner{text-align:center;width:min(420px,90%);animation:fadeUp 1s ease}
+.splash-logo{
+  width:112px;height:112px;margin:0 auto 25px;
+  display:grid;place-items:center;border-radius:28px;
+  border:1px solid #22d3ee75;
+  background:linear-gradient(145deg,#a855f726,#22d3ee12);
+  box-shadow:0 0 55px #a855f738,inset 0 0 25px #22d3ee12;
+  color:var(--cyan);font:700 2.5rem "Space Grotesk",sans-serif;
+  animation:logoPulse 2s infinite
+}
+.splash-inner h2{font:700 clamp(1.5rem,5vw,2rem) "Space Grotesk",sans-serif}
+.splash-inner h2 span{background:var(--gradient);background-clip:text;-webkit-background-clip:text;color:transparent}
+.splash-inner p{color:var(--muted);font-size:.7rem;letter-spacing:3px;margin-top:8px}
+.splash-track{width:210px;height:3px;background:#ffffff16;border-radius:10px;overflow:hidden;margin:25px auto 12px}
+.splash-progress{width:40%;height:100%;background:var(--gradient);animation:loading 1.5s ease-in-out infinite}
+.splash-status{color:#777b9e;font-size:.78rem}
+@keyframes loading{from{transform:translateX(-110%)}to{transform:translateX(360%)}}
+@keyframes logoPulse{50%{box-shadow:0 0 75px #a855f74d,inset 0 0 35px #22d3ee22}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* BACKGROUND PARTICLES */
+#particles{position:fixed;inset:0;pointer-events:none;z-index:-1;overflow:hidden}
+.particle{
+  position:absolute;width:3px;height:3px;border-radius:50%;
+  background:var(--cyan);opacity:.5;box-shadow:0 0 10px var(--cyan);
+  animation:floatParticle linear infinite
+}
+@keyframes floatParticle{
+  0%{transform:translateY(110vh);opacity:0}
+  10%{opacity:.5}
+  90%{opacity:.35}
+  100%{transform:translateY(-10vh);opacity:0}
+}
+
+/* NAVIGATION */
+.navbar{
+  position:sticky;top:0;z-index:100;
+  background:#080817e8;backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border)
+}
+.nav-inner{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font:700 1.35rem "Space Grotesk",sans-serif;white-space:nowrap}
+.logo span,.gradient-text{background:var(--gradient);background-clip:text;-webkit-background-clip:text;color:transparent}
+.nav-links{display:flex;align-items:center;gap:23px}
+.nav-links a{font-size:.86rem;color:var(--muted);transition:.2s}
+.nav-links a:hover,.nav-links a.active{color:var(--cyan)}
+.menu-toggle{display:none;background:var(--surface);color:white;border:1px solid var(--border);border-radius:8px;padding:7px 12px;cursor:pointer}
+
+section{padding:95px 0}
+.section-heading{text-align:center;margin-bottom:43px}
+.eyebrow{color:var(--cyan);text-transform:uppercase;font-size:.76rem;letter-spacing:3px;font-weight:700}
+h2{font:700 clamp(2rem,5vw,3rem)/1.2 "Space Grotesk",sans-serif;margin:10px 0 14px}
+.section-description{color:var(--muted);max-width:680px;margin:auto}
+
+/* HERO */
+.hero{min-height:86vh;display:flex;align-items:center;padding:80px 0}
+.hero-grid{display:grid;grid-template-columns:1.4fr .8fr;align-items:center;gap:60px}
+.hero-badge{display:inline-block;color:var(--cyan);background:#a855f714;border:1px solid var(--border);padding:7px 15px;border-radius:30px;font-size:.82rem;margin-bottom:24px}
+h1{font:700 clamp(2.8rem,6vw,5rem)/1.08 "Space Grotesk",sans-serif;letter-spacing:-2px;margin-bottom:22px}
+.hero-copy{max-width:620px;color:var(--muted);font-size:1.02rem}
+.hero-actions{display:flex;flex-wrap:wrap;gap:13px;margin-top:29px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 20px;border-radius:10px;font-weight:600;font-size:.88rem;border:1px solid var(--border);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 8px 30px #a855f72b}
+.btn-primary{background:var(--gradient);color:#080817;border:0}
+.btn-secondary{background:var(--surface)}
+.hero-visual{
+  width:min(320px,100%);aspect-ratio:1;margin:auto;display:grid;place-items:center;
+  position:relative;border-radius:50%;
+  background:radial-gradient(circle,#292052 0%,#15132e 50%,#0c0c20 72%);
+  border:1px solid #22d3ee55;
+  box-shadow:0 0 75px #a855f72a,inset 0 0 40px #22d3ee0c
+}
+.hero-visual:before,.hero-visual:after{content:"";position:absolute;inset:-15px;border:1px solid #a855f748;border-radius:50%;animation:orbit 16s linear infinite}
+.hero-visual:after{inset:12px;border-color:#22d3ee35;animation-direction:reverse;animation-duration:20s}
+.hero-symbol{font:700 4.5rem "Space Grotesk",sans-serif;background:var(--gradient);background-clip:text;-webkit-background-clip:text;color:transparent}
+@keyframes orbit{to{transform:rotate(360deg)}}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px;max-width:550px}
+.stat{padding:15px;background:var(--surface);border:1px solid var(--border);border-radius:12px}
+.stat strong{display:block;color:var(--cyan);font:700 1.4rem "Space Grotesk",sans-serif}
+.stat span{color:var(--muted);font-size:.76rem}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:25px}
+.panel{padding:27px;border-radius:17px;background:#111126e8;border:1px solid var(--border)}
+.panel h3,.skill-card h3,.project-card h3,.timeline-card h3{font:600 1.18rem "Space Grotesk",sans-serif;margin-bottom:12px}
+.panel p{color:var(--muted);margin-bottom:12px}
+.info-list{list-style:none}
+.info-list li{padding:9px 0;border-bottom:1px solid #ffffff0b;overflow-wrap:anywhere}
+.info-list li:last-child{border:0}
+.info-list strong{color:var(--cyan)}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.skill-card{padding:23px;background:var(--surface);border:1px solid var(--border);border-radius:15px;transition:.25s}
+.skill-card:hover,.project-card:hover,.timeline-card:hover{transform:translateY(-5px);border-color:#22d3ee88}
+.skill-icon{font-size:1.8rem;margin-bottom:9px}
+.skill-card h3{font-size:1rem}
+.skill-tags,.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{display:inline-block;color:#d8c5ff;background:#a855f710;border:1px solid #a855f738;border-radius:7px;padding:4px 9px;font-size:.74rem}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.project-card{min-width:0;display:flex;flex-direction:column;padding:25px;border-radius:16px;background:var(--surface);border:1px solid var(--border);transition:.25s}
+.project-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.project-icon{width:47px;height:47px;flex-shrink:0;display:grid;place-items:center;font-size:1.5rem;border-radius:12px;background:#a855f719}
+.project-category{font-size:.74rem;color:var(--cyan);text-align:right}
+.project-card h3{font-size:1.17rem}
+.project-card p{color:var(--muted);font-size:.91rem;margin-bottom:18px}
+.project-card .tags{margin-top:auto;margin-bottom:19px}
+.project-links a{font-size:.84rem;font-weight:600;color:var(--cyan)}
+.project-links a:hover{text-decoration:underline}
+
+/* EXPERIENCE TIMELINE */
+.timeline{position:relative;max-width:850px;margin:auto}
+.timeline:before{content:"";position:absolute;left:10px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--purple),var(--cyan))}
+.timeline-item{position:relative;padding-left:40px;margin-bottom:25px}
+.timeline-item:before{content:"";position:absolute;top:8px;left:3px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--cyan);box-shadow:0 0 15px #22d3ee55}
+.timeline-card{padding:23px;background:var(--surface);border:1px solid var(--border);border-radius:15px;transition:.25s}
+.timeline-company{color:var(--cyan);font-weight:600;font-size:.9rem}
+.timeline-type{font-size:.8rem;color:var(--muted);margin:5px 0 12px}
+.timeline-card p{font-size:.91rem;color:var(--muted)}
+
+/* CONTACT + FOOTER */
+.contact-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.contact-card{text-align:center;overflow-wrap:anywhere;padding:23px 13px;background:var(--surface);border:1px solid var(--border);border-radius:15px;transition:.2s}
+.contact-card:hover{border-color:var(--cyan);transform:translateY(-3px)}
+.contact-icon{font-size:1.7rem}
+.contact-card h3{font-size:.98rem;margin:8px 0}
+.contact-card p{font-size:.8rem;color:var(--muted)}
+footer{border-top:1px solid var(--border);padding:27px 0;text-align:center;color:var(--muted);font-size:.84rem}
+
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:850px){
+  .hero-grid{grid-template-columns:1fr;text-align:center;gap:45px}
+  .hero-visual{grid-row:1;width:245px}
+  .hero-copy,.stats{margin-inline:auto}
+  .hero-actions{justify-content:center}
+  .about-grid{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .nav-links{gap:12px}
+}
+@media(max-width:600px){
+  section{padding:68px 0}
+  .nav-inner{min-height:68px}
+  .menu-toggle{display:block}
+  .nav-links{
+    display:none;position:absolute;top:68px;left:0;right:0;
+    background:#0c0c20;padding:20px 5%;border-bottom:1px solid var(--border);
+    flex-direction:column;align-items:flex-start
+  }
+  .nav-links.open{display:flex}
+  .hero{min-height:auto;padding:60px 0}
+  h1{letter-spacing:-1px}
+  .hero-visual{width:210px}
+  .skills-grid,.projects-grid,.contact-grid{grid-template-columns:1fr}
+  .stats{gap:7px}
+  .stat{padding:11px 7px}
+  .stat strong{font-size:1.1rem}
+  .stat span{font-size:.68rem}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
 </head>
 
 <body>
-  <header class="navbar">
-    <div class="container nav-inner">
-      <a class="logo" href="#home">Faraz<span>.</span>dev</a>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">
-        ☰
-      </button>
+<!-- INTRO / SPLASH SCREEN -->
+<div id="splash-screen">
+  <div class="splash-inner">
+    <div class="splash-logo">&lt;F/&gt;</div>
+    <h2>Faraz's Engineer <span>World</span></h2>
+    <p>INITIALIZING DIGITAL EXPERIENCE</p>
+    <div class="splash-track"><div class="splash-progress"></div></div>
+    <div class="splash-status">Loading portfolio...</div>
+  </div>
+</div>
 
-      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#journey">Experience</a>
-        <a href="#contact">Contact</a>
-      </nav>
+<div id="particles" aria-hidden="true"></div>
+
+<header class="navbar">
+  <div class="container nav-inner">
+    <a class="logo" href="#home">Faraz<span>.</span>dev</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#journey">Journey</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div class="reveal">
+      <span class="hero-badge">✦ Software Developer | AI & ML Enthusiast</span>
+      <h1>Hi, I'm <span class="gradient-text">Muhammad Faraz</span></h1>
+      <p class="hero-copy">I build useful software applications, explore artificial intelligence, and turn ideas into practical digital experiences. I'm passionate about development, problem-solving, and continuous learning.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#projects">Explore My Work ↗</a>
+        <a class="btn btn-secondary" href="#contact">Let's Connect</a>
+        <a class="btn btn-secondary" href="Muhammad%20Faraz%20CV.pdf" target="_blank" rel="noopener">View CV ↗</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><strong>10+</strong><span>Project repositories</span></div>
+        <div class="stat"><strong>3</strong><span>Internship organizations</span></div>
+        <div class="stat"><strong>AI + Apps</strong><span>Areas of interest</span></div>
+      </div>
     </div>
-  </header>
+    <div class="hero-visual reveal"><span class="hero-symbol">&lt;F/&gt;</span></div>
+  </div>
+</section>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="container hero-grid">
-        <div class="reveal">
-          <span class="hero-badge">✦ Software Developer & ML Enthusiast</span>
-          <h1>Hi, I'm <span class="gradient-text">Muhammad Faraz</span></h1>
-          <p class="hero-copy">
-            I build useful software experiences, explore artificial intelligence,
-            and turn ideas into practical applications. Welcome to my digital
-            world of development, creativity, and continuous learning.
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#projects">Explore My Projects ↗</a>
-            <a class="btn btn-secondary" href="#contact">Let's Connect</a>
-            <a class="btn btn-secondary" href="Muhammad%20Faraz%20CV.pdf" target="_blank" rel="noopener">View My CV ↗</a>
-          </div>
-
-          <div class="stats">
-            <div class="stat"><strong>10+</strong><span>Project links & repositories</span></div>
-            <div class="stat"><strong>3</strong><span>Internship organizations</span></div>
-            <div class="stat"><strong>ML + App</strong><span>Development interests</span></div>
-          </div>
-        </div>
-
-        <div class="hero-visual reveal" aria-label="Faraz developer logo">
-          <span class="hero-symbol">&lt;F/&gt;</span>
-        </div>
-      </div>
-    </section>
-
-    <section id="about">
-      <div class="container">
-        <div class="section-heading reveal">
-          <span class="eyebrow">Who I Am</span>
-          <h2>About <span class="gradient-text">Me</span></h2>
-          <p class="section-description">Curious by nature, driven by technology, and always ready to learn something new.</p>
-        </div>
-
-        <div class="about-grid">
-          <article class="panel reveal">
-            <h3>My Developer Story</h3>
-            <p>
-              I'm Muhammad Faraz, a software developer interested in application
-              development, Python programming, machine learning, and AI-powered
-              solutions.
-            </p>
-            <p>
-              Through projects and internship experiences, I continue to develop
-              my problem-solving skills and learn how to build software that is
-              practical, maintainable, and user-friendly.
-            </p>
-            <p>
-              I enjoy experimenting with new technologies, improving my projects,
-              and sharing my work with the developer community.
-            </p>
-          </article>
-
-          <aside class="panel reveal">
-            <h3>Quick Information</h3>
-            <ul class="info-list">
-              <li><strong>Name:</strong> Muhammad Faraz</li>
-              <li><strong>Focus:</strong> Software & Application Development</li>
-              <li><strong>Interests:</strong> AI, ML, Python, Android</li>
-              <li><strong>GitHub:</strong> <a href="https://github.com/FarazMemon004" target="_blank" rel="noopener">FarazMemon004 ↗</a></li>
-              <li><strong>Location:</strong> Pakistan</li>
-            </ul>
-          </aside>
-        </div>
-      </div>
-    </section>
-
-    <section id="skills">
-      <div class="container">
-        <div class="section-heading reveal">
-          <span class="eyebrow">My Toolkit</span>
-          <h2>Skills & <span class="gradient-text">Technologies</span></h2>
-          <p class="section-description">Technologies and areas I work with or continue to explore through hands-on projects.</p>
-        </div>
-
-        <div class="skills-grid">
-          <article class="skill-card reveal">
-            <div class="skill-icon">💻</div>
-            <h3>Programming</h3>
-            <div class="skill-tags">
-              <span class="tag">Python</span><span class="tag">Kotlin</span>
-              <span class="tag">HTML</span><span class="tag">CSS</span>
-              <span class="tag">JavaScript</span>
-            </div>
-          </article>
-
-          <article class="skill-card reveal">
-            <div class="skill-icon">📱</div>
-            <h3>Application Development</h3>
-            <div class="skill-tags">
-              <span class="tag">Android</span><span class="tag">Jetpack Compose</span>
-              <span class="tag">UI Design</span><span class="tag">App Testing</span>
-            </div>
-          </article>
-
-          <article class="skill-card reveal">
-            <div class="skill-icon">🤖</div>
-            <h3>Data Science & ML</h3>
-            <div class="skill-tags">
-              <span class="tag">Scikit-learn</span><span class="tag">Pandas</span>
-              <span class="tag">NumPy</span><span class="tag">Classification</span>
-              <span class="tag">Regression</span><span class="tag">Model Evaluation</span>
-            </div>
-          </article>
-
-          <article class="skill-card reveal">
-            <div class="skill-icon">🧰</div>
-            <h3>Tools & Platforms</h3>
-            <div class="skill-tags">
-              <span class="tag">Git</span><span class="tag">GitHub</span>
-              <span class="tag">Google Colab</span><span class="tag">Android Studio</span>
-              <span class="tag">VS Code</span>
-            </div>
-          </article>
-
-          <article class="skill-card reveal">
-            <div class="skill-icon">🧠</div>
-            <h3>AI & Automation</h3>
-            <div class="skill-tags">
-              <span class="tag">Voice Assistants</span><span class="tag">Automation</span>
-              <span class="tag">AI Integration</span><span class="tag">Prompt Design</span>
-            </div>
-          </article>
-
-          <article class="skill-card reveal">
-            <div class="skill-icon">🚀</div>
-            <h3>Professional Skills</h3>
-            <div class="skill-tags">
-              <span class="tag">Problem Solving</span><span class="tag">Debugging</span>
-              <span class="tag">Teamwork</span><span class="tag">Continuous Learning</span>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects">
-      <div class="container">
-        <div class="section-heading reveal">
-          <span class="eyebrow">What I've Built</span>
-          <h2>Featured <span class="gradient-text">Projects</span></h2>
-          <p class="section-description">A selection of application development, Python, AI, and machine learning projects. Open a repository to explore the code.</p>
-        </div>
-
-        <div class="projects-grid">
-          <article class="project-card reveal">
-            <div class="project-top">
-              <div class="project-icon">🌐</div>
-              <span class="project-category">Application Development</span>
-            </div>
-            <h3>LinGua — Language Learning App</h3>
-            <p>A language-learning application project designed to help users explore languages and support their learning journey.</p>
-            <div class="tags"><span class="tag">Kotlin</span><span class="tag">Android</span><span class="tag">Mobile App</span></div>
-            <div class="project-links"><a href="https://github.com/FarazMemon004/CodeAlpha_LanguageLearningApp" target="_blank" rel="noopener">GitHub Repository ↗</a></div>
-          </article>
-
-          <article class="project-card reveal">
-            <div class="project-top">
-              <div class="project-icon">🧠</div>
-              <span class="project-category">Application Development</span>
-            </div>
-            <h3>Flashcard Quiz App</h3>
-            <p>An interactive flashcard quiz application created as part of the CodeAlpha internship project work.</p>
-            <div class="tags"><span class="tag">App Development</span><span class="tag">Quiz</span><span class="tag">Learning</span></div>
-            <div class="project-links"><a href="https://github.com/FarazMemon004/CodeAlpha-FlashCardQuizApp" target="_blank" rel="noopener">GitHub Repository ↗</a></div>
-          </article>
-
-          <article class="project-card reveal">
-            <div class="project-top">
-              <div class="project-icon">💬</div>
-              <span class="project-category">Application Development</span>
-            </div>
-            <h3>Quote Generator</h3>
-            <p>A quote generator project built to present inspirational quotes through a simple and accessible interface.</p>
-            <div class="tags"><span class="tag">CodeAlpha</span><span class="tag">UI</span><span class="tag">Application</span></div>
-            <div class="project-links"><a href="https://github.com/FarazMemon004/CodeAlpha_QuoteGenerator" target="_blank" rel="noopener">GitHub Repository ↗</a></div>
-          </article>
-
-          <article class="project-card reveal">
-            <div class="project-top">
-              <div class="project-icon">🌸</div>
-              <span class="project-category">Machine Learning</span>
-            </div>
-            <h3>Iris Flower Classification</h3>
-            <p>A classification project using Logistic Regression and Decision Tree models to predict Iris flower species. Both models achieved approximately 93.33% accuracy in the reported evaluation.</p>
-            <div class="tags"><span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">Classification</span></div>
-            <div class="project-links"><a href="https://github.com/FarazMemon004/Datheon_Machine_Learning_-_Data_Science_Internship" target="_blank" rel="noopener">GitHub Repository ↗</a></div>
-          </article>
-
-          <article class="project-card reveal">
-            <div class="project-top">
-              <div class="project-icon">🏡</div>
-              <span class="project-category">Machine Learning</span>
-            </div>
-            <h3>Real Estate House Price Prediction</h3>
-            <p>A regression-focused machine learning project exploring real estate data and predicting house prices from property features.</p>
-            <div class="tags"><span class="tag">Python</span><span class="tag">Regression</span><span class="tag">Data Analysis</span></div>
-            <div class="project-links"><a href="https://github.com/FarazMemon004/Datheon_Machine_Learning_-_Data_Science_Internship/tree/main/Task2-Real-Estate-Housing-Price-Prediction" target="_blank" rel="noopener">GitHub Repository ↗</a></div>
-          </article>
-
-          <article class="project-card reveal">
-            <div class="project-top">
-              <div class="project-icon">🎙️</div>
-              <span class="project-category">Python & AI</span>
-            </div>
-            <h3>Mac Assistant</h3>
-            <p>A personal assistant project for Mac, focused on voice-driven interaction and productivity-oriented assistant functionality.</p>
-            <div class="tags"><span class="tag">Python</span><span class="tag">Automation</span><span class="tag">Voice Assistant</span></div>
-            <div class="project-links"><a href="https://github.com/FarazMemon004/Mac-Assistant-For-Mac" target="_blank" rel="noopener">GitHub Repository ↗</a></div>
-          </article>
-
-          <article class="project-card reveal">
-            <div class="project-top">
-              <div class="project-icon">🎧</div>
-              <span class="project-category">AI & Mobile</span>
-            </div>
-            <h3>Moodify</h3>
-            <p>A mood-focused app project combining application development with a personalized user experience.</p>
-            <div class="tags"><span class="tag">Mobile App</span><span class="tag">UI/UX</span><span class="tag">Application</span></div>
-            <div class="project-links"><a href="https://github.com/FarazMemon004/My-Fyp-Moodify-App" target="_blank" rel="noopener">GitHub Repository ↗</a></div>
-          </article>
-
-          <article class="project-card reveal">
-            <div class="project-top">
-              <div class="project-icon">🎤</div>
-              <span class="project-category">Oasis Infobyte</span>
-            </div>
-            <h3>Python Voice Assistant</h3>
-            <p>A Python-based voice assistant internship project exploring speech interaction and assistant functionality.</p>
-            <div class="tags"><span class="tag">Python</span><span class="tag">Speech</span><span class="tag">Automation</span></div>
-            <div class="project-links"><a href="https://github.com/FarazMemon004/OIBSIP/tree/main/Python/Task1-Voice%20Assistant" target="_blank" rel="noopener">GitHub Repository ↗</a></div>
-          </article>
-
-          <article class="project-card reveal">
-            <div class="project-top">
-              <div class="project-icon">📊</div>
-              <span class="project-category">Oasis Infobyte</span>
-            </div>
-            <h3>BMI Calculator</h3>
-            <p>A Python project that calculates Body Mass Index from user-provided measurements.</p>
-            <div class="tags"><span class="tag">Python</span><span class="tag">Calculator</span><span class="tag">Beginner Project</span></div>
-            <div class="project-links"><a href="https://github.com/FarazMemon004/OIBSIP/tree/main/Python/Task2-BMICalculator" target="_blank" rel="noopener">GitHub Repository ↗</a></div>
-          </article>
-
-          <article class="project-card reveal">
-            <div class="project-top">
-              <div class="project-icon">🔐</div>
-              <span class="project-category">Oasis Infobyte</span>
-            </div>
-            <h3>Random Password Generator</h3>
-            <p>A utility for generating random passwords as part of the Python programming internship task series.</p>
-            <div class="tags"><span class="tag">Python</span><span class="tag">Randomization</span><span class="tag">Utility</span></div>
-            <div class="project-links"><a href="https://github.com/FarazMemon004/OIBSIP/tree/main/Python/Task3-RandomPasswordGenerator" target="_blank" rel="noopener">GitHub Repository ↗</a></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="journey">
-      <div class="container">
-        <div class="section-heading reveal">
-          <span class="eyebrow">Experience & Growth</span>
-          <h2>My <span class="gradient-text">Journey</span></h2>
-          <p class="section-description">Internship experiences and hands-on learning across software development and data science.</p>
-        </div>
-
-        <div class="timeline">
-          <article class="timeline-item reveal">
-            <div class="timeline-card">
-              <h3>Forward Deployed Engineer (FDE)</h3>
-              <div class="timeline-company">Datheon</div>
-              <div class="timeline-type">Professional Experience</div>
-              <p>Working in a forward-deployed engineering role. Add your specific responsibilities, tools, and achievements here to accurately reflect your experience.</p>
-            </div>
-          </article>
-
-          <article class="timeline-item reveal">
-            <div class="timeline-card">
-              <h3>Machine Learning & Data Science Intern</h3>
-              <div class="timeline-company">Datheon</div>
-              <div class="timeline-type">Internship</div>
-              <p>Worked on Iris Flower Classification and Real Estate House Price Prediction projects, applying machine learning methods to classification and regression tasks.</p>
-            </div>
-          </article>
-
-          <article class="timeline-item reveal">
-            <div class="timeline-card">
-              <h3>Application Development Intern</h3>
-              <div class="timeline-company">CodeAlpha</div>
-              <div class="timeline-type">Internship · 3 Projects</div>
-              <p>Completed project work involving the Flashcard Quiz App, Quote Generator, and LinGua Language Learning App.</p>
-              <div class="tags" style="margin-top: 15px;">
-                <span class="tag">Flashcard Quiz App</span>
-                <span class="tag">Quote Generator</span>
-                <span class="tag">LinGua</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="timeline-item reveal">
-            <div class="timeline-card">
-              <h3>Python Programming Intern</h3>
-              <div class="timeline-company">Oasis Infobyte</div>
-              <div class="timeline-type">Internship</div>
-              <p>Built Python programming tasks including a Voice Assistant, BMI Calculator, and Random Password Generator.</p>
-            </div>
-          </article>
-
-    <article class="timeline-item reveal">
-            <div class="timeline-card">
-              <h3>Python & AI Developer Intern</h3>
-              <div class="timeline-company">Craft4Dev</div>
-              <div class="timeline-type">Internship</div>
-              <p>Built python based software and gained practical exposure to Artificial Intelligence, programming, software development, problem- solving, and AI-related technologies.
-              </p>
-            </div>
-          </article>
-        </div>
-      </div>
-    
-
-    <section id="contact">
-      <div class="container">
-        <div class="section-heading reveal">
-          <span class="eyebrow">Let's Talk</span>
-          <h2>Get In <span class="gradient-text">Touch</span></h2>
-          <p class="section-description">Have an opportunity, collaboration idea, or project in mind? Feel free to connect.</p>
-        </div>
-
-        <div class="contact-grid">
-          <a class="contact-card reveal" href="mailto:farazmemon00@gmail.com">
-            <div class="contact-icon">✉️</div>
-            <h3>Email</h3>
-            <p>farazmemon00@gmail.com</p>
-          </a>
-
-          <a class="contact-card reveal" href="https://github.com/FarazMemon004" target="_blank" rel="noopener">
-            <div class="contact-icon">💻</div>
-            <h3>GitHub</h3>
-            <p>Explore my repositories</p>
-          </a>
-
-          <a class="contact-card reveal" href="https://www.linkedin.com/in/muhammad-faraz-memon-92582a43a/" target="_blank" rel="noopener">
-            <div class="contact-icon">🔗</div>
-            <h3>LinkedIn</h3>
-            <p>Connect professionally</p>
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <p>Designed & built by <span class="gradient-text">Muhammad Faraz</span></p>
-      <p>© <span id="year"></span> Software Engineer World. All rights reserved.</p>
+<section id="about">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span class="eyebrow">Discover My Story</span>
+      <h2>About <span class="gradient-text">Me</span></h2>
+      <p class="section-description">A technology enthusiast building skills through real projects and hands-on experience.</p>
     </div>
-  </footer>
+    <div class="about-grid">
+      <article class="panel reveal">
+        <h3>My Developer Journey</h3>
+        <p>I'm Muhammad Faraz, a software developer interested in application development, Python programming, machine learning, and AI-powered solutions.</p>
+        <p>My projects include mobile applications, Python utilities, voice assistants, and machine learning experiments. I enjoy learning new tools, solving problems, and improving the quality of my work.</p>
+        <p>My goal is to continue growing as an engineer and contribute to useful, reliable, and user-friendly technology.</p>
+      </article>
+      <aside class="panel reveal">
+        <h3>Quick Information</h3>
+        <ul class="info-list">
+          <li><strong>Name:</strong> Muhammad Faraz</li>
+          <li><strong>Focus:</strong> Software & Application Development</li>
+          <li><strong>Interests:</strong> AI, ML, Python, Android</li>
+          <li><strong>Location:</strong> Pakistan</li>
+          <li><strong>GitHub:</strong> <a href="https://github.com/FarazMemon004" target="_blank" rel="noopener">FarazMemon004 ↗</a></li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>
 
-  <script>
-    const menuToggle = document.getElementById("menuToggle");
-    const navLinks = document.getElementById("navLinks");
+<section id="skills">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span class="eyebrow">My Toolkit</span>
+      <h2>Skills & <span class="gradient-text">Technologies</span></h2>
+      <p class="section-description">Tools and technical areas used or explored through my development journey.</p>
+    </div>
+    <div class="skills-grid">
+      <article class="skill-card reveal"><div class="skill-icon">💻</div><h3>Programming</h3><div class="skill-tags"><span class="tag">Python</span><span class="tag">Kotlin</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div></article>
+      <article class="skill-card reveal"><div class="skill-icon">📱</div><h3>Application Development</h3><div class="skill-tags"><span class="tag">Android</span><span class="tag">Jetpack Compose</span><span class="tag">UI Design</span><span class="tag">Mobile Apps</span></div></article>
+      <article class="skill-card reveal"><div class="skill-icon">🤖</div><h3>Data Science & ML</h3><div class="skill-tags"><span class="tag">Scikit-learn</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Classification</span><span class="tag">Regression</span></div></article>
+      <article class="skill-card reveal"><div class="skill-icon">🧰</div><h3>Tools & Platforms</h3><div class="skill-tags"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Google Colab</span><span class="tag">Android Studio</span><span class="tag">VS Code</span></div></article>
+      <article class="skill-card reveal"><div class="skill-icon">🎙️</div><h3>AI & Automation</h3><div class="skill-tags"><span class="tag">Voice Assistants</span><span class="tag">Automation</span><span class="tag">AI Integration</span></div></article>
+      <article class="skill-card reveal"><div class="skill-icon">🚀</div><h3>Professional Skills</h3><div class="skill-tags"><span class="tag">Problem Solving</span><span class="tag">Debugging</span><span class="tag">Teamwork</span><span class="tag">Learning</span></div></article>
+    </div>
+  </div>
+</section>
 
-    menuToggle.addEventListener("click", () => {
-      const isOpen = navLinks.classList.toggle("open");
-      menuToggle.setAttribute("aria-expanded", String(isOpen));
-      menuToggle.textContent = isOpen ? "✕" : "☰";
-    });
+<section id="projects">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span class="eyebrow">Things I've Built</span>
+      <h2>Featured <span class="gradient-text">Projects</span></h2>
+      <p class="section-description">Explore my application development, Python, AI, and machine learning projects.</p>
+    </div>
 
-    document.querySelectorAll("#navLinks a").forEach(link => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("open");
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.textContent = "☰";
-      });
-    });
+    <div class="projects-grid">
+      <article class="project-card reveal">
+        <div class="project-top"><div class="project-icon">🌐</div><span class="project-category">CodeAlpha · Android</span></div>
+        <h3>LinGua — Language Learning App</h3>
+        <p>A language-learning application designed to help users explore languages through a mobile learning experience.</p>
+        <div class="tags"><span class="tag">Kotlin</span><span class="tag">Android</span><span class="tag">Mobile App</span></div>
+        <div class="project-links"><a href="https://github.com/FarazMemon004/CodeAlpha_LanguageLearningApp" target="_blank" rel="noopener">GitHub Repository ↗</a></div>
+      </article>
 
-    document.getElementById("year").textContent = new Date().getFullYear();
+      <article class="project-card reveal">
+        <div class="project-top"><div class="project-icon">🧠</div><span class="project-category">CodeAlpha</span></div>
+        <h3>Flashcard Quiz App</h3>
+        <p>An interactive quiz and flashcard project built as part of the CodeAlpha application development internship.</p>
+        <div class="tags"><span class="tag">Application</span><span class="tag">Quiz</span><span class="tag">Learning</span></div>
+        <div class="project-links"><a href="https://github.com/FarazMemon004/CodeAlpha-FlashCardQuizApp" target="_blank" rel="noopener">GitHub Repository ↗</a></div>
+      </article>
 
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
+      <article class="project-card reveal">
+        <div class="project-top"><div class="project-icon">💬</div><span class="project-category">CodeAlpha</span></div>
+        <h3>Quote Generator</h3>
+        <p>A quote generator application project designed to display inspirational quotes through a straightforward interface.</p>
+        <div class="tags"><span class="tag">CodeAlpha</span><span class="tag">UI</span><span class="tag">Application</span></div>
+        <div class="project-links"><a href="https://github.com/FarazMemon004/CodeAlpha_QuoteGenerator" target="_blank" rel="noopener">GitHub Repository ↗</a></div>
+      </article>
 
-    document.querySelectorAll(".reveal").forEach(element => observer.observe(element));
-  </script>
+      <article class="project-card reveal">
+        <div class="project-top"><div class="project-icon">🌸</div><span class="project-category">Datheon · ML</span></div>
+        <h3>Iris Flower Classification</h3>
+        <p>A machine learning classification task using Logistic Regression and Decision Tree models, with approximately 93.33% reported accuracy for each.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">Classification</span></div>
+        <div class="project-links"><a href="https://github.com/FarazMemon004/Datheon_Machine_Learning_-_Data_Science_Internship" target="_blank" rel="noopener">GitHub Repository ↗</a></div>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="project-top"><div class="project-icon">🏡</div><span class="project-category">Datheon · ML</span></div>
+        <h3>Real Estate House Price Prediction</h3>
+        <p>A regression-based project exploring real estate data and predicting house prices from property features.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Regression</span><span class="tag">Data Analysis</span></div>
+        <div class="project-links"><a href="https://github.com/FarazMemon004/Datheon_Machine_Learning_-_Data_Science_Internship/tree/main/Task2-Real-Estate-Housing-Price-Prediction" target="_blank" rel="noopener">GitHub Repository ↗</a></div>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="project-top"><div class="project-icon">🎙️</div><span class="project-category">Python · AI</span></div>
+        <h3>Mac Assistant</h3>
+        <p>A personal assistant project for Mac focused on voice-driven interaction and productivity-oriented assistant functionality.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Automation</span><span class="tag">Voice</span></div>
+        <div class="project-links"><a href="https://github.com/FarazMemon004/Mac-Assistant-For-Mac" target="_blank" rel="noopener">GitHub Repository ↗</a></div>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="project-top"><div class="project-icon">🎧</div><span class="project-category">Mobile App</span></div>
+        <h3>Moodify</h3>
+        <p>A mood-focused app project exploring a personalized mobile experience.</p>
+        <div class="tags"><span class="tag">Mobile App</span><span class="tag">UI/UX</span></div>
+        <div class="project-links"><a href="https://github.com/FarazMemon004/My-Fyp-Moodify-App" target="_blank" rel="noopener">GitHub Repository ↗</a></div>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="project-top"><div class="project-icon">🎤</div><span class="project-category">Oasis Infobyte</span></div>
+        <h3>Python Voice Assistant</h3>
+        <p>A Python voice assistant task exploring speech interaction and assistant functionality.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Speech</span><span class="tag">Automation</span></div>
+        <div class="project-links"><a href="https://github.com/FarazMemon004/OIBSIP/tree/main/Python/Task1-Voice%20Assistant" target="_blank" rel="noopener">GitHub Repository ↗</a></div>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="project-top"><div class="project-icon">📊</div><span class="project-category">Oasis Infobyte</span></div>
+        <h3>BMI Calculator</h3>
+        <p>A Python utility that calculates Body Mass Index from user-provided measurements.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Calculator</span></div>
+        <div class="project-links"><a href="https://github.com/FarazMemon004/OIBSIP/tree/main/Python/Task2-BMICalculator" target="_blank" rel="noopener">GitHub Repository ↗</a></div>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="project-top"><div class="project-icon">🔐</div><span class="project-category">Oasis Infobyte</span></div>
+        <h3>Random Password Generator</h3>
+        <p>A Python utility for generating random passwords, completed as an internship task.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Utility</span></div>
+        <div class="project-links"><a href="https://github.com/FarazMemon004/OIBSIP/tree/main/Python/Task3-RandomPasswordGenerator" target="_blank" rel="noopener">GitHub Repository ↗</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="journey">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span class="eyebrow">Experience & Growth</span>
+      <h2>My <span class="gradient-text">Journey</span></h2>
+      <p class="section-description">My professional experience and practical learning across software development and data science.</p>
+    </div>
+
+    <div class="timeline">
+      <article class="timeline-item reveal">
+        <div class="timeline-card">
+          <h3>Forward Deployed Engineer (FDE)</h3>
+          <div class="timeline-company">Datheon</div>
+          <div class="timeline-type">Professional Experience</div>
+          <p>Forward-deployed engineering experience. Add your confirmed responsibilities and achievements here to reflect your actual role.</p>
+        </div>
+      </article>
+
+      <article class="timeline-item reveal">
+        <div class="timeline-card">
+          <h3>Machine Learning & Data Science Intern</h3>
+          <div class="timeline-company">Datheon</div>
+          <div class="timeline-type">Internship</div>
+          <p>Worked on Iris Flower Classification and Real Estate House Price Prediction projects involving classification, regression, and model evaluation.</p>
+        </div>
+      </article>
+
+      <article class="timeline-item reveal">
+        <div class="timeline-card">
+          <h3>Application Development Intern</h3>
+          <div class="timeline-company">CodeAlpha</div>
+          <div class="timeline-type">Internship · 3 Projects</div>
+          <p>Completed project work involving the Flashcard Quiz App, Quote Generator, and LinGua Language Learning App.</p>
+          <div class="tags" style="margin-top:14px"><span class="tag">Flashcard Quiz App</span><span class="tag">Quote Generator</span><span class="tag">LinGua</span></div>
+        </div>
+      </article>
+
+      <article class="timeline-item reveal">
+        <div class="timeline-card">
+          <h3>Python Programming Intern</h3>
+          <div class="timeline-company">Oasis Infobyte</div>
+          <div class="timeline-type">Internship</div>
+          <p>Developed Python tasks including a Voice Assistant, BMI Calculator, and Random Password Generator.</p>
+        </div>
+      </article>
+
+<article class="timeline-item reveal">
+        <div class="timeline-card">
+          <h3>Python & AI Developer</h3>
+          <div class="timeline-company">Craft4Dev</div>
+          <div class="timeline-type">Internship</div>
+          <p>Developed Python based softwares and gained practical exposure to Artificial Intelligence, programming, software development, problem- solving, and AI-related technologies. </p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span class="eyebrow">Let's Connect</span>
+      <h2>Get In <span class="gradient-text">Touch</span></h2>
+      <p class="section-description">Have a project, opportunity, or collaboration idea? Feel free to reach out.</p>
+    </div>
+    <div class="contact-grid">
+      <a class="contact-card reveal" href="mailto:farazmemon00@gmail.com"><div class="contact-icon">✉️</div><h3>Email</h3><p>farazmemon00@gmail.com</p></a>
+      <a class="contact-card reveal" href="https://github.com/FarazMemon004" target="_blank" rel="noopener"><div class="contact-icon">💻</div><h3>GitHub</h3><p>Explore my repositories</p></a>
+      <a class="contact-card reveal" href="https://www.linkedin.com/in/muhammad-faraz-memon-92582a43a/" target="_blank" rel="noopener"><div class="contact-icon">🔗</div><h3>LinkedIn</h3><p>Connect professionally</p></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <p>Designed & built by <span class="gradient-text">Muhammad Faraz</span></p>
+    <p>© <span id="year"></span> Faraz's World. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+/* Splash screen */
+window.addEventListener("load", () => {
+  const splash = document.getElementById("splash-screen");
+  setTimeout(() => {
+    splash.classList.add("hide");
+    setTimeout(() => splash.remove(), 850);
+  }, 1600);
+});
+
+/* Floating background particles */
+const particleContainer = document.getElementById("particles");
+for (let i = 0; i < 42; i++) {
+  const particle = document.createElement("span");
+  particle.className = "particle";
+  particle.style.left = Math.random() * 100 + "%";
+  particle.style.animationDuration = (9 + Math.random() * 15) + "s";
+  particle.style.animationDelay = (-Math.random() * 20) + "s";
+  particle.style.opacity = (0.15 + Math.random() * 0.4).toString();
+  const size = (2 + Math.random() * 2.5) + "px";
+  particle.style.width = size;
+  particle.style.height = size;
+  particleContainer.appendChild(particle);
+}
+
+/* Mobile navigation */
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+menuToggle.addEventListener("click", () => {
+  const opened = navLinks.classList.toggle("open");
+  menuToggle.setAttribute("aria-expanded", String(opened));
+  menuToggle.textContent = opened ? "✕" : "☰";
+});
+
+document.querySelectorAll("#navLinks a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.textContent = "☰";
+  });
+});
+
+/* Scroll reveal animations */
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
+
+/* Footer year */
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
